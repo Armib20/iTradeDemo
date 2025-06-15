@@ -17,8 +17,8 @@ openai.api_key = st.secrets["OPENAI_API_KEY"]
 @st.cache_resource
 def get_lemmatizer():
     try:
-        nltk.data.find('corpora/wordnet.zip')
-    except nltk.downloader.DownloadError:
+        nltk.data.find('corpora/wordnet')
+    except LookupError:
         nltk.download('wordnet')
     return WordNetLemmatizer()
 
